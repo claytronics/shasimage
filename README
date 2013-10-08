@@ -1,0 +1,17 @@
+./byregion image-file
+- generates a file called block-desc.txt and other images
+
+format of block-desc.txt
+<# of regions> regions <width-and-height-of-image>
+
+then, for each region
+
+<id>: <ul> <ur> <inter-line-height> <one|multi> <# of points in bounding region>
+
+for each point in bounding region
+<point>
+
+histogram code
+--------------
+for sample histogram code see updateFillBlocker and code in if (genHist) conditional
+see also template <class Pixel> Histogram* Image<Pixel>::collectEdgeHistogram(int direc, Pixel color, int runlen)
