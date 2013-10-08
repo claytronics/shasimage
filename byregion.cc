@@ -2487,7 +2487,7 @@ connregions1(RegionList* allRegions, Image<Pixel>*& regions, Image<unsigned char
                         hImg->drawLine(startx, y, startx+hy->get(y), y, 0x00ffffff);
                     }
                 }
-                if (0) {
+                if (1) {
                     char filename[128];
                     sprintf(filename, "%s-%d-hist.ppm", outname, i);
                     hImg->PPMout(filename);
@@ -2534,10 +2534,11 @@ updateFillBlocker(Image<unsigned char>*& blocker, RegionList* allRegions, Image<
     }
 
     if (genHist) {
+        int showimg = 0;
         int barlen = 600;
         Image<int>* base;
         Image<int>* hImg;
-        if (0) {
+        if (showimg) {
             base = recolor(fill,allRegions);
             hImg = new Image<int>(base->getWidth()+barlen, base->getHeight()+barlen);
             base->copyRegion(0, 0, base->getWidth(), base->getHeight(), hImg, 0, 0);
@@ -2556,7 +2557,7 @@ updateFillBlocker(Image<unsigned char>*& blocker, RegionList* allRegions, Image<
             }
         }
         if (intermediateFiles) blocker->PGMout(imageFilename("blocker2", "ppm"));
-        if (0) {
+        if (showimg) {
             //hx->print("X before remin");
             printf("Base X:%d\n", hx->remin(10));
             //hx->print("X after remin");
@@ -2577,7 +2578,7 @@ updateFillBlocker(Image<unsigned char>*& blocker, RegionList* allRegions, Image<
                 hImg->drawLine(startx, y, startx+hy->get(y), y, 0x00ffffff);
             }
         }
-        if (0) {
+        if (showimg) {
             hImg->PPMout(imageFilename("hist", "ppm"));
             delete hImg;
             delete base;
